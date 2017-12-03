@@ -53,7 +53,7 @@ class TickerViewController: UIViewController {
         tableView.reloadData()
 
         networkSocket.onTick = {tick in
-            self.title = "\(self.currentCurrency): \(tick.formattedPrice)"
+            self.refreshTitle(tick: tick)
             self.datasource.insert(tick, at: 0)
             self.tableView.insertRows(at: [IndexPath(item: 0, section: 0)], with: .automatic)
         }
@@ -74,6 +74,19 @@ class TickerViewController: UIViewController {
         networkSocket.subscribe(subscription: subscription)
     }
 
+    func refreshTitle(tick: Tick) {
+        if let vault = UserDefaults.standard.vaults,
+            let current = vault[self.currentCurrency],
+            let floatPrice = tick.floatPrice {
+            self.title = """
+                        \(self.currentCurrency): \(tick.formattedPrice),
+                        HOLD: \(tick.currentPriceFormatter.string(from: NSNumber(value: floatPrice * current))!)
+                        """
+        } else {
+            self.title = "\(self.currentCurrency): \(tick.formattedPrice)"
+        }
+    }
+
     @objc func onStatusView() {
         networkSocket.isConnected ? networkSocket.stop() : reconnect()
     }
@@ -87,6 +100,26 @@ class TickerViewController: UIViewController {
         }
         sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(sheet, animated: true, completion: nil)
+    }
+
+    @IBAction func onHoldButton(_ sender: Any) {
+        let alert = UIAlertController(title: "How much \(currentCurrency) do you hold?", message: nil, preferredStyle: .alert)
+        alert.addTextField { (field) in
+            field.keyboardType = UIKeyboardType.numberPad
+        }
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+            if let value = alert.textFields?.first?.text, let floatValue = Float(value) {
+                if var currentVault = UserDefaults.standard.vaults {
+                    currentVault[self.currentCurrency] = floatValue
+                    UserDefaults.standard.vaults = currentVault
+                } else {
+                    UserDefaults.standard.vaults = [self.currentCurrency: floatValue]
+                }
+                self.refreshTitle(tick: self.datasource.first!)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }
 

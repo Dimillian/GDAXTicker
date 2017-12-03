@@ -26,6 +26,8 @@
 		9FC5C2341FD31C2B007D4651 /* UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC5C21E1FD31C2B007D4651 /* UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9FC5C23D1FD31C37007D4651 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC5C23C1FD31C37007D4651 /* Colors.swift */; };
 		9FC5C23F1FD4029F007D4651 /* StatusBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC5C23E1FD4029F007D4651 /* StatusBadge.swift */; };
+		9FC5C2411FD4188C007D4651 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC5C2401FD4188C007D4651 /* BorderedButton.swift */; };
+		9FC5C2441FD41ACA007D4651 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC5C2431FD41ACA007D4651 /* UserDefault.swift */; };
 		F7CAAD9CDEE1FC94417F5310 /* Pods_GDAXTicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A56ABFE168596DAEE543922F /* Pods_GDAXTicker.framework */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +111,8 @@
 		9FC5C22F1FD31C2B007D4651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FC5C23C1FD31C37007D4651 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		9FC5C23E1FD4029F007D4651 /* StatusBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBadge.swift; sourceTree = "<group>"; };
+		9FC5C2401FD4188C007D4651 /* BorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
+		9FC5C2431FD41ACA007D4651 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		A56ABFE168596DAEE543922F /* Pods_GDAXTicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GDAXTicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58E0A44B5F48216DD5C3ED6 /* Pods-GDAXTicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GDAXTicker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GDAXTicker/Pods-GDAXTicker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,6 +205,7 @@
 		9F4F90651FD2E6CB007793B3 /* GDAXTicker */ = {
 			isa = PBXGroup;
 			children = (
+				9FC5C2421FD41AB8007D4651 /* extensions */,
 				9FC5C20E1FD2EA85007D4651 /* models */,
 				9FC5C2071FD2E79A007D4651 /* network */,
 				9FC5C2061FD2E795007D4651 /* controllers */,
@@ -289,6 +294,7 @@
 				9FC5C2211FD31C2B007D4651 /* Info.plist */,
 				9FC5C23C1FD31C37007D4651 /* Colors.swift */,
 				9FC5C23E1FD4029F007D4651 /* StatusBadge.swift */,
+				9FC5C2401FD4188C007D4651 /* BorderedButton.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -300,6 +306,14 @@
 				9FC5C22F1FD31C2B007D4651 /* Info.plist */,
 			);
 			path = UITests;
+			sourceTree = "<group>";
+		};
+		9FC5C2421FD41AB8007D4651 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9FC5C2431FD41ACA007D4651 /* UserDefault.swift */,
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -571,6 +585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FC5C2171FD31956007D4651 /* TickTableViewCell.swift in Sources */,
+				9FC5C2441FD41ACA007D4651 /* UserDefault.swift in Sources */,
 				9FC5C2121FD2EA98007D4651 /* Subscribe.swift in Sources */,
 				9FC5C2091FD2E7AB007D4651 /* TickerViewController.swift in Sources */,
 				9FC5C2141FD3143D007D4651 /* Tick.swift in Sources */,
@@ -601,6 +616,7 @@
 			files = (
 				9FC5C23D1FD31C37007D4651 /* Colors.swift in Sources */,
 				9FC5C23F1FD4029F007D4651 /* StatusBadge.swift in Sources */,
+				9FC5C2411FD4188C007D4651 /* BorderedButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

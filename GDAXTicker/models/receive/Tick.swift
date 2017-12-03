@@ -15,12 +15,20 @@ struct Tick: Codable {
     let side: String?
     let product_id: String?
 
+    var floatPrice: Float? {
+        return Float(price)
+    }
+
     var formattedPrice: String {
+        return currentPriceFormatter.string(from: NSNumber(value: Float(price)!)) ?? "Unavailable"
+    }
+
+    var currentPriceFormatter: NumberFormatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.locale = Locale.current
         formatter.currencyCode = product_id != nil && product_id!.contains("USD") ? "USD" : "EUR"
-        return formatter.string(from: NSNumber(value: Float(price)!)) ?? "Unavailable"
+        return formatter
     }
 
     var formattedDate: String? {

@@ -14,7 +14,7 @@
         <scene sceneID="tni-Qu-6Uv">
             <objects>
                 <navigationController id="cdm-1z-uCB" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Gib-Lz-djw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Gib-Lz-djw">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -35,11 +35,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="TickerViewController" customModule="GDAXTicker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OPh-0Z-MWU">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="ofS-bS-ivl">
@@ -57,13 +57,28 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="title" value="Test"/>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afx-kV-NAx">
-                                            <rect key="frame" x="295" y="13" width="63" height="30"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afx-kV-NAx" customClass="BorderedButton" customModule="UI">
+                                            <rect key="frame" x="283" y="13" width="75" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="75" id="G8O-Yn-4Ww"/>
+                                            </constraints>
                                             <state key="normal" title="Currency">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                             <connections>
                                                 <action selector="onCurrencyButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ccn-3y-GeI"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9O-qz-9WA" customClass="BorderedButton" customModule="UI">
+                                            <rect key="frame" x="17" y="13" width="50" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="D7q-ho-0Rh"/>
+                                            </constraints>
+                                            <state key="normal" title="HOLD">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="onHoldButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l56-o8-z0S"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -73,6 +88,8 @@
                                         <constraint firstItem="ctX-Vc-s9G" firstAttribute="centerX" secondItem="ofS-bS-ivl" secondAttribute="centerX" id="2jW-hk-yO0"/>
                                         <constraint firstItem="ctX-Vc-s9G" firstAttribute="centerY" secondItem="ofS-bS-ivl" secondAttribute="centerY" id="IBQ-Qy-iZU"/>
                                         <constraint firstAttribute="trailing" secondItem="Afx-kV-NAx" secondAttribute="trailing" constant="17" id="UvF-iO-pw0"/>
+                                        <constraint firstItem="A9O-qz-9WA" firstAttribute="leading" secondItem="ofS-bS-ivl" secondAttribute="leading" constant="17" id="hsj-RH-gn1"/>
+                                        <constraint firstItem="A9O-qz-9WA" firstAttribute="centerY" secondItem="ofS-bS-ivl" secondAttribute="centerY" id="yoI-6F-ox6"/>
                                     </constraints>
                                 </view>
                                 <sections/>
