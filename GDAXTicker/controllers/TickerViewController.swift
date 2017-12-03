@@ -118,6 +118,13 @@ class TickerViewController: UIViewController {
             }
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Delete HOLD", style: .destructive, handler: { (_) in
+            if var currentVault = UserDefaults.standard.vaults {
+                currentVault[self.currentCurrency] = nil
+                UserDefaults.standard.vaults = currentVault
+                self.refreshTitle(tick: self.datasource.first!)
+            }
+        }))
         present(alert, animated: true, completion: nil)
     }
 }
