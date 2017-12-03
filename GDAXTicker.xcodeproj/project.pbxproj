@@ -30,7 +30,6 @@
 		9FCD28671FD428790051FC74 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FCD28661FD428790051FC74 /* NotificationCenter.framework */; };
 		9FCD286A1FD428790051FC74 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCD28691FD428790051FC74 /* TodayViewController.swift */; };
 		9FCD286D1FD428790051FC74 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FCD286B1FD428790051FC74 /* MainInterface.storyboard */; };
-		9FCD28711FD428790051FC74 /* Ticker Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9FCD28651FD428790051FC74 /* Ticker Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9FCD28841FD4289D0051FC74 /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FCD287B1FD4289D0051FC74 /* Shared.framework */; };
 		9FCD288B1FD4289D0051FC74 /* SharedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCD288A1FD4289D0051FC74 /* SharedTests.swift */; };
 		9FCD288D1FD4289D0051FC74 /* Shared.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FCD287D1FD4289D0051FC74 /* Shared.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -79,13 +78,6 @@
 			remoteGlobalIDString = 9FC5C21D1FD31C2B007D4651;
 			remoteInfo = UI;
 		};
-		9FCD286F1FD428790051FC74 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9F4F905B1FD2E6CB007793B3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9FCD28641FD428790051FC74;
-			remoteInfo = "Ticker Widget";
-		};
 		9FCD28851FD4289D0051FC74 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9F4F905B1FD2E6CB007793B3 /* Project object */;
@@ -120,17 +112,6 @@
 				9FCD28911FD4289D0051FC74 /* Shared.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9FCD28751FD428790051FC74 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				9FCD28711FD428790051FC74 /* Ticker Widget.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -478,7 +459,6 @@
 				9F4F90601FD2E6CB007793B3 /* Frameworks */,
 				9F4F90611FD2E6CB007793B3 /* Resources */,
 				9FC5C2381FD31C2B007D4651 /* Embed Frameworks */,
-				9FCD28751FD428790051FC74 /* Embed App Extensions */,
 				BAD320087398B7D0922F9A12 /* [CP] Embed Pods Frameworks */,
 				573B659BD26879DF5E0121E3 /* [CP] Copy Pods Resources */,
 			);
@@ -487,7 +467,6 @@
 			dependencies = (
 				9FC5C2321FD31C2B007D4651 /* PBXTargetDependency */,
 				9FCD288F1FD4289D0051FC74 /* PBXTargetDependency */,
-				9FCD28701FD428790051FC74 /* PBXTargetDependency */,
 			);
 			name = GDAXTicker;
 			productName = GDAXTicker;
@@ -948,11 +927,6 @@
 			target = 9FC5C21D1FD31C2B007D4651 /* UI */;
 			targetProxy = 9FC5C2311FD31C2B007D4651 /* PBXContainerItemProxy */;
 		};
-		9FCD28701FD428790051FC74 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9FCD28641FD428790051FC74 /* Ticker Widget */;
-			targetProxy = 9FCD286F1FD428790051FC74 /* PBXContainerItemProxy */;
-		};
 		9FCD28861FD4289D0051FC74 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9FCD287A1FD4289D0051FC74 /* Shared */;
@@ -1115,6 +1089,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = Z6P74P6T99;
 				INFOPLIST_FILE = GDAXTicker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thomasricouard.GDAXTicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1135,6 +1110,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = Z6P74P6T99;
 				INFOPLIST_FILE = GDAXTicker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thomasricouard.GDAXTicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1214,7 +1190,7 @@
 		9FC5C2361FD31C2B007D4651 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1226,6 +1202,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = UI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thomasricouard.UI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -1241,7 +1218,7 @@
 		9FC5C2371FD31C2B007D4651 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1253,6 +1230,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = UI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thomasricouard.UI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -1299,7 +1277,7 @@
 		9FCD28721FD428790051FC74 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z6P74P6T99;
 				INFOPLIST_FILE = "Ticker Widget/Info.plist";
@@ -1315,7 +1293,7 @@
 		9FCD28731FD428790051FC74 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z6P74P6T99;
 				INFOPLIST_FILE = "Ticker Widget/Info.plist";
@@ -1332,7 +1310,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6434A6DEFC4A7CC7444016C0 /* Pods-Shared.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1343,6 +1321,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Shared/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thomasricouard.Shared;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -1358,7 +1337,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D483019D0E58665EA227670E /* Pods-Shared.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1369,6 +1348,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Shared/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thomasricouard.Shared;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
