@@ -16,7 +16,9 @@ class TickerViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var statusBadge: StatusBadge!
-
+    @IBOutlet var holdButton: BorderedButton!
+    @IBOutlet var currencyButton: BorderedButton!
+    
     var currentCurrency = "LTC-EUR" {
         didSet {
             networkSocket.onDisconnect = {
@@ -99,6 +101,9 @@ class TickerViewController: UIViewController {
             }))
         }
         sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        sheet.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
+        sheet.popoverPresentationController?.sourceRect = currencyButton.frame
+        sheet.popoverPresentationController?.sourceView = currencyButton
         present(sheet, animated: true, completion: nil)
     }
 
@@ -126,6 +131,8 @@ class TickerViewController: UIViewController {
                 self.refreshTitle(tick: self.datasource.first!)
             }
         }))
+        alert.popoverPresentationController?.sourceView = holdButton
+        alert.popoverPresentationController?.sourceRect = holdButton.frame
         present(alert, animated: true, completion: nil)
     }
 }

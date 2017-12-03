@@ -9,15 +9,15 @@
 import UIKit
 
 @IBDesignable
-class BorderedButton: UIButton {
+open class BorderedButton: UIButton {
 
-    override func awakeFromNib() {
+    override open func awakeFromNib() {
         super.awakeFromNib()
 
         setup()
     }
 
-    override func prepareForInterfaceBuilder() {
+    override open func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
 
         setup()

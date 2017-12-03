@@ -110,6 +110,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="GDAX TIcker" id="oa3-N4-wxs"/>
                     <connections>
+                        <outlet property="currencyButton" destination="Afx-kV-NAx" id="eVM-ie-IMA"/>
+                        <outlet property="holdButton" destination="A9O-qz-9WA" id="lK0-C5-Po2"/>
                         <outlet property="statusBadge" destination="ctX-Vc-s9G" id="QPo-IM-L1l"/>
                         <outlet property="tableView" destination="OPh-0Z-MWU" id="IpB-qk-ht1"/>
                     </connections>
