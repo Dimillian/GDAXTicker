@@ -57,11 +57,22 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="title" value="Test"/>
                                             </userDefinedRuntimeAttributes>
                                         </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afx-kV-NAx">
+                                            <rect key="frame" x="295" y="13" width="63" height="30"/>
+                                            <state key="normal" title="Currency">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="onCurrencyButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ccn-3y-GeI"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstItem="Afx-kV-NAx" firstAttribute="centerY" secondItem="ofS-bS-ivl" secondAttribute="centerY" id="16H-UU-taV"/>
                                         <constraint firstItem="ctX-Vc-s9G" firstAttribute="centerX" secondItem="ofS-bS-ivl" secondAttribute="centerX" id="2jW-hk-yO0"/>
                                         <constraint firstItem="ctX-Vc-s9G" firstAttribute="centerY" secondItem="ofS-bS-ivl" secondAttribute="centerY" id="IBQ-Qy-iZU"/>
+                                        <constraint firstAttribute="trailing" secondItem="Afx-kV-NAx" secondAttribute="trailing" constant="17" id="UvF-iO-pw0"/>
                                     </constraints>
                                 </view>
                                 <sections/>

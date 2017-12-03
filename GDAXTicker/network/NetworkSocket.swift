@@ -20,6 +20,7 @@ class NetworkSocket {
 
     public var onTick: ((Tick) -> Void)?
     public var onConnectionChange: ((Bool) -> Void)?
+    public var onDisconnect: (() -> Void)?
 
     init() {
         socket.delegate = self
@@ -41,6 +42,9 @@ class NetworkSocket {
     }
 
     public func stop() {
+        socket.onDisconnect = {_ in
+            self.onDisconnect?()
+        }
         socket.disconnect()
     }
     

@@ -13,12 +13,13 @@ struct Tick: Codable {
     let last_size: String?
     let time: String?
     let side: String?
+    let product_id: String?
 
     var formattedPrice: String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.locale = Locale.current
-        formatter.currencyCode = "EUR"
+        formatter.currencyCode = product_id != nil && product_id!.contains("USD") ? "USD" : "EUR"
         return formatter.string(from: NSNumber(value: Float(price)!)) ?? "Unavailable"
     }
 

@@ -16,11 +16,24 @@ class TickerViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var statusBadge: StatusBadge!
 
+    var currentCurrency = "LTC-EUR" {
+        didSet {
+            networkSocket.onDisconnect = {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                    self.reconnect()
+                })
+            }
+            networkSocket.stop()
+        }
+    }
+
+    let currencies = ["LTC-USD", "LTC-EUR", "BTC-USD", "BTC-EUR"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         UIApplication.shared.statusBarStyle = .lightContent
-        title = "LTC-EUR"
+        title = currentCurrency
 
         statusBadge.backgroundColor = .gd_redColor
         statusBadge.title = "Loading..."
@@ -40,7 +53,7 @@ class TickerViewController: UIViewController {
         tableView.reloadData()
 
         networkSocket.onTick = {tick in
-            self.title = "LTC-EUR: \(tick.formattedPrice)"
+            self.title = "\(self.currentCurrency): \(tick.formattedPrice)"
             self.datasource.insert(tick, at: 0)
             self.tableView.insertRows(at: [IndexPath(item: 0, section: 0)], with: .automatic)
         }
@@ -56,13 +69,24 @@ class TickerViewController: UIViewController {
         }
 
         networkSocket.start()
-        let channel = Channel(name: "ticker", products: ["LTC-EUR"])
+        let channel = Channel(name: "ticker", products: [currentCurrency])
         let subscription = Subscribe(channels: [channel])
         networkSocket.subscribe(subscription: subscription)
     }
 
     @objc func onStatusView() {
         networkSocket.isConnected ? networkSocket.stop() : reconnect()
+    }
+    
+    @IBAction func onCurrencyButton(_ sender: Any) {
+        let sheet = UIAlertController(title: "Choose network", message: nil, preferredStyle: .actionSheet)
+        for currency in currencies {
+            sheet.addAction(UIAlertAction(title: currency, style: .default, handler: { (_) in
+                self.currentCurrency = currency
+            }))
+        }
+        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(sheet, animated: true, completion: nil)
     }
 }
 
