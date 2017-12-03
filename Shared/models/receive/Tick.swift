@@ -8,22 +8,22 @@
 
 import Foundation
 
-struct Tick: Codable {
-    let price: String
-    let last_size: String?
-    let time: String?
-    let side: String?
-    let product_id: String?
+public struct Tick: Codable {
+    public let price: String
+    public let last_size: String?
+    public let time: String?
+    public let side: String?
+    public let product_id: String?
 
-    var floatPrice: Float? {
+    public var floatPrice: Float? {
         return Float(price)
     }
 
-    var formattedPrice: String {
+    public var formattedPrice: String {
         return currentPriceFormatter.string(from: NSNumber(value: Float(price)!)) ?? "Unavailable"
     }
 
-    var currentPriceFormatter: NumberFormatter {
+    public var currentPriceFormatter: NumberFormatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.locale = Locale.current
@@ -31,7 +31,7 @@ struct Tick: Codable {
         return formatter
     }
 
-    var formattedDate: String? {
+    public var formattedDate: String? {
         if let time = time {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"//this your string date format

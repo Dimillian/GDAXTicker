@@ -9,7 +9,7 @@
 import Foundation
 import Starscream
 
-class NetworkSocket {
+open class NetworkSocket {
     private let socket = WebSocket(url: URL(string: "wss://ws-feed.gdax.com")!)
     public var isConnected = false {
         didSet {
@@ -22,7 +22,7 @@ class NetworkSocket {
     public var onConnectionChange: ((Bool) -> Void)?
     public var onDisconnect: (() -> Void)?
 
-    init() {
+    public init() {
         socket.delegate = self
     }
 
@@ -64,7 +64,7 @@ extension NetworkSocket {
 }
 
 extension NetworkSocket: WebSocketDelegate {
-    func websocketDidConnect(socket: WebSocketClient) {
+    public func websocketDidConnect(socket: WebSocketClient) {
         isConnected = true
         if !dataToWrite.isEmpty {
             for data in dataToWrite {
@@ -75,12 +75,12 @@ extension NetworkSocket: WebSocketDelegate {
         }
     }
 
-    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
+    public func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
         print(error ?? "Disconnected")
         isConnected = false
     }
 
-    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+    public func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         if let data = text.data(using: .utf8) {
             let decoder = JSONDecoder()
             do {
@@ -92,7 +92,7 @@ extension NetworkSocket: WebSocketDelegate {
         }
     }
 
-    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
+    public func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
         let string = String(data: data, encoding: .utf8)
         print(string ?? "No String")
     }

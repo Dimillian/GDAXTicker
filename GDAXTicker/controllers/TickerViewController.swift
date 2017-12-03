@@ -8,6 +8,7 @@
 
 import UIKit
 import UI
+import Shared
 
 class TickerViewController: UIViewController {
     let networkSocket = NetworkSocket()
