@@ -42,6 +42,29 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="ofS-bS-ivl">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="57"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ctX-Vc-s9G" customClass="StatusBadge" customModule="UI">
+                                            <rect key="frame" x="122.5" y="13" width="130" height="30"/>
+                                            <color key="backgroundColor" red="0.96078431369999995" green="0.31764705879999999" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="1Sm-OU-peq"/>
+                                                <constraint firstAttribute="width" constant="130" id="ivV-Mi-Edm"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="Test"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="ctX-Vc-s9G" firstAttribute="centerX" secondItem="ofS-bS-ivl" secondAttribute="centerX" id="2jW-hk-yO0"/>
+                                        <constraint firstItem="ctX-Vc-s9G" firstAttribute="centerY" secondItem="ofS-bS-ivl" secondAttribute="centerY" id="IBQ-Qy-iZU"/>
+                                    </constraints>
+                                </view>
+                                <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="NmQ-0x-oWp"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="0he-Sb-qGX"/>
@@ -59,12 +82,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="GDAX TIcker" id="oa3-N4-wxs"/>
                     <connections>
+                        <outlet property="statusBadge" destination="ctX-Vc-s9G" id="QPo-IM-L1l"/>
                         <outlet property="tableView" destination="OPh-0Z-MWU" id="IpB-qk-ht1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-90" y="107"/>
+            <point key="canvasLocation" x="-90.400000000000006" y="106.59670164917542"/>
         </scene>
     </scenes>
 </document>

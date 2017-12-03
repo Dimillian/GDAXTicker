@@ -25,6 +25,7 @@
 		9FC5C2331FD31C2B007D4651 /* UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC5C21E1FD31C2B007D4651 /* UI.framework */; };
 		9FC5C2341FD31C2B007D4651 /* UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC5C21E1FD31C2B007D4651 /* UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9FC5C23D1FD31C37007D4651 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC5C23C1FD31C37007D4651 /* Colors.swift */; };
+		9FC5C23F1FD4029F007D4651 /* StatusBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC5C23E1FD4029F007D4651 /* StatusBadge.swift */; };
 		F7CAAD9CDEE1FC94417F5310 /* Pods_GDAXTicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A56ABFE168596DAEE543922F /* Pods_GDAXTicker.framework */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +108,7 @@
 		9FC5C22D1FD31C2B007D4651 /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
 		9FC5C22F1FD31C2B007D4651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FC5C23C1FD31C37007D4651 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		9FC5C23E1FD4029F007D4651 /* StatusBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBadge.swift; sourceTree = "<group>"; };
 		A56ABFE168596DAEE543922F /* Pods_GDAXTicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GDAXTicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58E0A44B5F48216DD5C3ED6 /* Pods-GDAXTicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GDAXTicker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GDAXTicker/Pods-GDAXTicker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -286,6 +288,7 @@
 				9FC5C2201FD31C2B007D4651 /* UI.h */,
 				9FC5C2211FD31C2B007D4651 /* Info.plist */,
 				9FC5C23C1FD31C37007D4651 /* Colors.swift */,
+				9FC5C23E1FD4029F007D4651 /* StatusBadge.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FC5C23D1FD31C37007D4651 /* Colors.swift in Sources */,
+				9FC5C23F1FD4029F007D4651 /* StatusBadge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

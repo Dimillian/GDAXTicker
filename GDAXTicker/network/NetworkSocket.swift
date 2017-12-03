@@ -11,10 +11,15 @@ import Starscream
 
 class NetworkSocket {
     private let socket = WebSocket(url: URL(string: "wss://ws-feed.gdax.com")!)
-    private var isConnected = false
+    public var isConnected = false {
+        didSet {
+            onConnectionChange?(isConnected)
+        }
+    }
     private var dataToWrite: [Data] = []
 
-    public var onTick:  ((Tick) -> Void)?
+    public var onTick: ((Tick) -> Void)?
+    public var onConnectionChange: ((Bool) -> Void)?
 
     init() {
         socket.delegate = self
@@ -33,6 +38,10 @@ class NetworkSocket {
                 dataToWrite.append(data)
             }
         }
+    }
+
+    public func stop() {
+        socket.disconnect()
     }
     
 }
