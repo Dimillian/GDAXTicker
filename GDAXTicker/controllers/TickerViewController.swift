@@ -79,8 +79,7 @@ class TickerViewController: UIViewController {
             let current = vault[self.currentCurrency],
             let floatPrice = tick.floatPrice {
             self.title = """
-                        \(self.currentCurrency): \(tick.formattedPrice),
-                        HOLD: \(tick.currentPriceFormatter.string(from: NSNumber(value: floatPrice * current))!)
+                        \(self.currentCurrency): \(tick.formattedPrice), HOLD: \(tick.currentPriceFormatter.string(from: NSNumber(value: floatPrice * current))!)
                         """
         } else {
             self.title = "\(self.currentCurrency): \(tick.formattedPrice)"
