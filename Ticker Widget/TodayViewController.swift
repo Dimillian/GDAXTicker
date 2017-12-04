@@ -8,6 +8,8 @@
 
 import UIKit
 import NotificationCenter
+import Shared
+import UI
 
 class TodayViewController: UIViewController, NCWidgetProviding {
         
