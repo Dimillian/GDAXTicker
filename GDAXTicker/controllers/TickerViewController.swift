@@ -8,25 +8,29 @@
 
 import UIKit
 import UI
-import Shared
+import GDAX_Swift
 
 class TickerViewController: UIViewController {
-    let networkSocket = NetworkSocket()
-    var datasource: [Tick] = []
+
+    var datasource: [TickerResponse] = []
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var statusBadge: StatusBadge!
     @IBOutlet var holdButton: BorderedButton!
     @IBOutlet var currencyButton: BorderedButton!
-    
+
     var currentCurrency = "LTC-EUR" {
         didSet {
-            networkSocket.onDisconnect = {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-                    self.reconnect()
-                })
+            GDAX.feed.disconectFrom(channel: .ticker, product: oldValue)
+
+            let values = currentCurrency.split(separator: "-")
+            let from = gdax_products.init(rawValue: String(values[0]))
+            let to = gdax_products.init(rawValue: String(values[1]))
+            let _ = GDAX.feed.subscribeTicker(for: [gdax_value(from:from!, to: to!)]) { (tick) in
+                self.refreshTitle(tick: tick)
+                self.datasource.insert(tick, at: 0)
+                self.tableView.insertRows(at: [IndexPath(item: 0, section: 0)], with: .automatic)
             }
-            networkSocket.stop()
         }
     }
 
@@ -54,30 +58,20 @@ class TickerViewController: UIViewController {
     func reconnect() {
         datasource = []
         tableView.reloadData()
-
-        networkSocket.onTick = {tick in
-            self.refreshTitle(tick: tick)
-            self.datasource.insert(tick, at: 0)
-            self.tableView.insertRows(at: [IndexPath(item: 0, section: 0)], with: .automatic)
-        }
-
-        networkSocket.onConnectionChange = {isConnected in
-            if !isConnected {
+        currentCurrency = "LTC-EUR"
+        GDAX.feed.onConnectionChange = []
+        GDAX.feed.onConnectionChange?.append( { connected in
+            if !connected {
                 self.statusBadge.backgroundColor = .gd_redColor
                 self.statusBadge.title = "Disconnected"
             } else {
                 self.statusBadge.backgroundColor = .gd_greenColor
                 self.statusBadge.title = "Connected"
             }
-        }
-
-        networkSocket.start()
-        let channel = Channel(name: "ticker", products: [currentCurrency])
-        let subscription = Subscribe(channels: [channel])
-        networkSocket.subscribe(subscription: subscription)
+        })
     }
 
-    func refreshTitle(tick: Tick) {
+    func refreshTitle(tick: TickerResponse) {
         if let vault = UserDefaults.standard.vaults,
             let current = vault[self.currentCurrency],
             let floatPrice = tick.floatPrice {
@@ -90,7 +84,7 @@ class TickerViewController: UIViewController {
     }
 
     @objc func onStatusView() {
-        networkSocket.isConnected ? networkSocket.stop() : reconnect()
+        !GDAX.feed.isConnected ? reconnect() : ()
     }
     
     @IBAction func onCurrencyButton(_ sender: Any) {

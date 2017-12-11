@@ -8,7 +8,7 @@
 
 import UIKit
 import UI
-import Shared
+import GDAX_Swift
 
 class TickTableViewCell: UITableViewCell {
 
@@ -19,7 +19,7 @@ class TickTableViewCell: UITableViewCell {
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var typeView: UIView!
 
-    var tick: Tick! {
+    var tick: TickerResponse! {
         didSet {
             typeView.backgroundColor = tick.side == "buy" ? UIColor.gd_greenColor : UIColor.gd_redColor
             sizeLabel.text = tick.last_size ?? "0"

@@ -10,24 +10,24 @@ import Foundation
 import Starscream
 
 open class NetworkSocket {
-    private let socket = WebSocket(url: URL(string: "wss://ws-feed.gdax.com")!)
+
     public var isConnected = false {
         didSet {
             onConnectionChange?(isConnected)
         }
     }
     private var dataToWrite: [Data] = []
-
+    private var socket: WebSocket!
     public var onTick: ((Tick) -> Void)?
     public var onConnectionChange: ((Bool) -> Void)?
     public var onDisconnect: (() -> Void)?
 
     public init() {
-        socket.delegate = self
+        socket = WebSocket(request: URLRequest(url: URL(string: "")!))
     }
 
     public func start() {
-        socket.connect()
+        
     }
 
     public func subscribe(subscription: Subscribe) {
