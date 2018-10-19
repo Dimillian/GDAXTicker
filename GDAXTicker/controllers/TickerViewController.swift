@@ -34,12 +34,11 @@ class TickerViewController: UIViewController {
         }
     }
 
-    let currencies = ["LTC-USD", "LTC-EUR", "BTC-USD", "BTC-EUR"]
+    let currencies = ["LTC-USD", "LTC-EUR", "BTC-USD", "BTC-EUR", "BCH-USD", "BCH-EUR", "ETC-USD", "ETC-EUR", "ZRX-USD", "ZRX-EUR"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        UIApplication.shared.statusBarStyle = .lightContent
         title = currentCurrency
 
         statusBadge.backgroundColor = .gd_redColor
@@ -128,6 +127,9 @@ class TickerViewController: UIViewController {
         alert.popoverPresentationController?.sourceView = holdButton
         alert.popoverPresentationController?.sourceRect = holdButton.frame
         present(alert, animated: true, completion: nil)
+    }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }
 
