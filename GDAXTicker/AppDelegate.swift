@@ -15,8 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
         return true
     }
 
@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let content = UNMutableNotificationContent()
             content.title = "LTC-EUR"
             content.body = tick!.price ?? ""
-            content.sound = UNNotificationSound.default()
+            content.sound = UNNotificationSound.default
             let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 2, repeats: false)
             let request = UNNotificationRequest.init(identifier: "ltc-eur", content: content, trigger: trigger)
             let center = UNUserNotificationCenter.current()
